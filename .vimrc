@@ -71,11 +71,14 @@ Plugin 'jiangmiao/auto-pairs'
 Plugin 'Shougo/vimproc.vim', {'do' : 'make'}
 
 
-" typescript
+" typescript syntax
 Plugin 'leafgarland/typescript-vim'
 
 " component templates syntax highlighting
 Plugin 'Quramy/vim-js-pretty-template'
+
+" typescript ide mother fucker
+Plugin 'Quramy/tsuquyomi'
 
 call vundle#end()            
 filetype plugin indent on   
