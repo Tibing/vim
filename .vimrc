@@ -1,6 +1,6 @@
-set nocompatible              
+set nocompatible
 set number
-filetype off                 
+filetype off
 syntax on
 
 " search
@@ -13,7 +13,7 @@ set smartcase
 
 " colorscheme
 set t_Co=256
-colorscheme one-dark
+colorscheme gruvbox
 set background=dark
 
 " cursor
@@ -24,8 +24,8 @@ hi CursorLine ctermbg=237
 " tabulation
 set tabstop=2
 set softtabstop=2
-set expandtab 
-set shiftwidth=2 
+set expandtab
+set shiftwidth=2
 set smarttab
 
 " buffers
@@ -45,13 +45,21 @@ nmap <C-j> :wincmd j<cr>
 " tabs
 nmap <A-l> :bn<cr>
 nmap <A-h> :bp<cr>
-nmap <A-q> :bp <bar> bd #<cr>
+nmap <A-q> :bp <bar> bw #<cr>
 
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
+Plugin 'morhetz/gruvbox'
+
 Plugin 'VundleVim/Vundle.vim'
+
+" git
+Plugin 'airblade/vim-gitgutter'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
+
+
 
 " airline
 Plugin 'vim-airline/vim-airline'
@@ -80,8 +88,8 @@ Plugin 'Quramy/vim-js-pretty-template'
 " typescript ide mother fucker
 Plugin 'Quramy/tsuquyomi'
 
-call vundle#end()            
-filetype plugin indent on   
+call vundle#end()
+filetype plugin indent on
 
 
 " Nerd tree
@@ -96,7 +104,7 @@ let g:NERDSpaceDelims = 1
 set laststatus=2
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
-let g:airline_theme='wombat'
+let g:airline_theme='gruvbox'
 
 " typescript
 autocmd BufNewFile,BufRead *.ts setlocal filetype=typescript
@@ -115,3 +123,6 @@ while c <= 'z'
   let c = nr2char(1+char2nr(c))
 endw
 set timeout ttimeoutlen=50
+
+" Highlight word under cursor
+autocmd CursorMoved * exe printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\'))
